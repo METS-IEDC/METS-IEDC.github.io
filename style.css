@@ -1,7 +1,7 @@
 /* ===========================
    GOOGLE FONT IMPORTS
 =========================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Michroma&family=Abel&display=swap');
 
 /* ===========================
    RESET + BASE STYLES
@@ -60,15 +60,15 @@ a {
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -107,6 +107,7 @@ a {
   background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 12px;
+  text-align: center;
 }
 
 .hero-overlay h2 {
@@ -162,7 +163,7 @@ a {
 =========================== */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   max-width: 1000px;
   margin: 2rem auto 0 auto;
@@ -226,9 +227,49 @@ a {
   background: #0b0b0b;
   padding: 2rem;
   text-align: center;
-  font-size: 0.9rem;
+  color: #aaa;
 }
 
-.footer a {
-  color: #00e5ff;
+.footer .copyright {
+  font-family: 'Michroma', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.6rem;
+  color: #888;
+}
+
+.footer .credit {
+  font-family: 'Abel', sans-serif;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .hero-overlay h2 {
+    font-size: 1.7rem;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
 }
