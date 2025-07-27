@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
-  <title>METS IEDC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Official website of METS IEDC. Explore innovation, technology, and entrepreneurship.">
   <meta name="keywords" content="METS IEDC, Innovation, Entrepreneurship, Kerala, College">
   <meta name="author" content="METS IEDC Team">
-</head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>METS IEDC</title>
 
   <!-- Google Fonts -->
@@ -109,7 +105,7 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       justify-content: center;
     }
@@ -174,11 +170,34 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
+
+    @media (max-width: 600px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-overlay h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero-overlay p {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header class="header">
     <div class="logo">
       <span id="typed-text"></span><span id="cursor">|</span>
@@ -193,7 +212,6 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section id="hero" class="hero">
     <video autoplay muted loop playsinline>
       <source src="assets/banner.mp4" type="video/mp4" />
@@ -207,7 +225,6 @@
     </div>
   </section>
 
-  <!-- Team Section -->
   <section id="team" class="section dark-blue">
     <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Executive Committee</h2>
     <div class="team-grid">
@@ -224,17 +241,15 @@
     </div>
   </section>
 
-  <!-- Events Section -->
   <section id="events" class="section dark-gradient">
     <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Events</h2>
     <p class="coming-soon">Coming Soon...</p>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="section dark-blue">
     <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Connect With Us</h2>
     <div class="contact-links">
-      <a href="metscasiedc@gmail.com">Email</a>
+      <a href="mailto:metscasiedc@gmail.com">Email</a>
       <a href="https://instagram.com/mets_iedc" target="_blank">Instagram</a>
       <a href="https://youtube.com/@METS_IEDC" target="_blank">YouTube</a>
       <a href="https://x.com/METS_IEDC" target="_blank">X</a>
@@ -242,20 +257,16 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <p class="footer-main">© 2025 METS IEDC. All rights reserved.</p>
     <p class="footer-credit">Made by Shalan Muneer.</p>
   </footer>
 
-  <!-- Typewriter Script -->
   <script>
     const typedText = document.getElementById('typed-text');
     const cursor = document.getElementById('cursor');
-
     const fullText1 = "Mets College of Advanced Studies";
     const fullText2 = "MET'S IEDC";
-
     let text = '';
     let index = 0;
     let state = 'typing1';
@@ -294,9 +305,7 @@
         }
       }
     }
-
     typeWriter();
   </script>
-
 </body>
 </html>
