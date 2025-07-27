@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background-color: #000;
@@ -28,6 +32,9 @@
       align-items: center;
       padding: 1rem 2rem;
       background-color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo {
@@ -50,6 +57,11 @@
       font-family: 'Playfair Display', serif;
       font-weight: 500;
       font-size: 1rem;
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid #00f;
+      padding-bottom: 0.2rem;
     }
 
     .hero {
@@ -171,11 +183,7 @@
       50% { opacity: 0; }
     }
 
-    @media (max-width: 600px) {
-      .team-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-      }
-
+    @media (max-width: 768px) {
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
@@ -263,6 +271,7 @@
   </footer>
 
   <script>
+    // Typewriter effect
     const typedText = document.getElementById('typed-text');
     const cursor = document.getElementById('cursor');
     const fullText1 = "Mets College of Advanced Studies";
@@ -306,6 +315,27 @@
       }
     }
     typeWriter();
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
   </script>
 </body>
 </html>
