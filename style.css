@@ -68,9 +68,8 @@ a {
   list-style: none;
   display: flex;
   gap: 2rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
 }
 
 .nav-links li a {
@@ -164,10 +163,10 @@ a {
 =========================== */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* always 3 columns */
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   max-width: 1000px;
-  margin: 2rem auto 0 auto;
+  margin: 2rem auto;
   padding: 0 1rem;
 }
 
@@ -176,6 +175,8 @@ a {
   border-radius: 10px;
   transition: transform 0.3s;
   box-shadow: 0 0 0 1px #222;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .team-card:hover {
@@ -247,46 +248,50 @@ a {
 }
 
 /* ===========================
-   RESPONSIVE FIXES
+   RESPONSIVE FIX
 =========================== */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1rem 2rem;
   }
 
   .nav-links {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-    gap: 1rem;
   }
 
-  .team-grid {
-    grid-template-columns: repeat(3, 1fr); /* still 3 columns */
+  .hero-overlay h2 {
+    font-size: 1.7rem;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 400px) {
   .team-grid {
-    grid-template-columns: repeat(3, 1fr); /* force even on tiny screen */
-    gap: 0.8rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
   }
 
   .nav-links {
     flex-direction: row;
-    justify-content: space-around;
-    gap: 0.5rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem;
   }
 
-  .hero-overlay h2 {
-    font-size: 1.5rem;
+  .nav-links li a {
+    font-size: 0.9rem;
+    padding: 0.2rem;
   }
 
-  .section h2 {
-    font-size: 1.6rem;
+  .logo {
+    font-size: 2rem;
   }
 }
