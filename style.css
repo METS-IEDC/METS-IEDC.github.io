@@ -45,13 +45,14 @@ a {
 }
 
 .logo {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: white;
   letter-spacing: 1.2px;
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  flex: 1;
 }
 
 #cursor {
@@ -64,11 +65,17 @@ a {
   50% { opacity: 0; }
 }
 
+nav {
+  flex: 2;
+  text-align: right;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -248,7 +255,7 @@ a {
 }
 
 /* ===========================
-   RESPONSIVE FIX
+   RESPONSIVE
 =========================== */
 @media (max-width: 768px) {
   .header {
@@ -258,10 +265,14 @@ a {
     padding: 1rem 2rem;
   }
 
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
+  nav {
     width: 100%;
+    text-align: left;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    gap: 1rem;
   }
 
   .hero-overlay h2 {
@@ -275,15 +286,13 @@ a {
 
 @media (max-width: 400px) {
   .team-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
   }
 
   .nav-links {
-    flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    justify-content: space-between;
   }
 
   .nav-links li a {
