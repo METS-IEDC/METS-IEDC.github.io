@@ -87,7 +87,8 @@ nav {
   letter-spacing: 0.5px;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a.active {
   color: #00bcd4;
 }
 
@@ -166,33 +167,29 @@ nav {
 }
 
 /* ===========================
-   TEAM SECTION - EXEC CARDS
+   EXECUTIVE TEAM CAROUSEL
 =========================== */
-.team-grid {
+.team-wrapper {
+  overflow: hidden;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.team-carousel {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
   gap: 1rem;
-  padding: 1rem;
-  margin: 2rem auto;
-  max-width: 100%;
+  transition: transform 0.5s ease;
   scroll-behavior: smooth;
 }
 
-.team-grid::-webkit-scrollbar {
-  display: none;
-}
-
 .team-card {
-  flex: 0 0 300px;
-  background: #000;
-  border-radius: 10px;
-  transition: transform 0.3s;
-  box-shadow: 0 0 0 1px #222;
+  flex: 0 0 auto;
+  width: 300px;
+  border-radius: 12px;
   overflow: hidden;
-  scroll-snap-align: center;
-  text-align: center;
-  cursor: pointer;
+  background-color: #111;
+  border: 1px solid #333;
+  transition: transform 0.3s ease;
 }
 
 .team-card:hover {
@@ -203,20 +200,45 @@ nav {
   width: 100%;
   height: auto;
   display: block;
-  border-bottom: 1px solid #222;
 }
 
-.team-card h3 {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #fff;
-  margin: 0.5rem 0 0;
+@media (min-width: 769px) {
+  .team-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .team-card {
+    width: 100%;
+  }
 }
 
-.team-card p {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-bottom: 1rem;
+@media (max-width: 768px) {
+  .team-wrapper {
+    overflow-x: auto;
+  }
+
+  .team-carousel {
+    flex-wrap: nowrap;
+    animation: scroll-horizontal 20s linear infinite;
+  }
+
+  @keyframes scroll-horizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .team-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .team-carousel:hover {
+    animation-play-state: paused;
+  }
+
+  .team-card {
+    scroll-snap-align: start;
+  }
 }
 
 /* ===========================
@@ -277,20 +299,8 @@ nav {
 }
 
 /* ===========================
-   RESPONSIVE
+   MEDIA QUERIES
 =========================== */
-@media (min-width: 769px) {
-  .team-grid {
-    justify-content: center;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-  }
-
-  .team-card {
-    flex: 0 0 calc(33.333% - 1rem);
-  }
-}
-
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
