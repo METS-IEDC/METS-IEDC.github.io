@@ -264,7 +264,7 @@
   <script>
     const typedText = document.getElementById('typed-text');
     const cursor = document.getElementById('cursor');
-    const fullText1 = "College of Advanced Studies";
+    const fullText1 = "MES C.A.S";
     const fullText2 = "METS IEDC";
     let text = '';
     let index = 0;
@@ -278,8 +278,10 @@
           index++;
           setTimeout(typeWriter, 25);
         } else {
-          state = 'deleting1';
-          setTimeout(typeWriter, 100);
+          setTimeout(() => {
+             state = 'deleting1';
+             typeWriter();
+          }, 1000);
         }
       } else if (state === 'deleting1') {
         if (index > 0) {
