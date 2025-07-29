@@ -116,8 +116,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: transform 0.3s;
-      opacity: 0.4;
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0.3;
     }
 
     .swiper-slide-active {
@@ -153,6 +153,32 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .contact-links a {
+      color: #6cf;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .contact-links a:hover {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -162,10 +188,10 @@
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Connect</a></li>
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#events" class="nav-link">Events</a></li>
+        <li><a href="#contact" class="nav-link">Connect</a></li>
       </ul>
     </nav>
   </header>
@@ -187,6 +213,7 @@
     <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Executive Committee</h2>
     <div class="swiper">
       <div class="swiper-wrapper">
+        <!-- Instagram-linked cards -->
         <div class="swiper-slide"><a href="https://instagram.com/user1" target="_blank"><img src="assets/images/1.png" alt="Member 1" /></a></div>
         <div class="swiper-slide"><a href="https://instagram.com/user2" target="_blank"><img src="assets/images/2.png" alt="Member 2" /></a></div>
         <div class="swiper-slide"><a href="https://instagram.com/user3" target="_blank"><img src="assets/images/3.png" alt="Member 3" /></a></div>
@@ -279,14 +306,13 @@
     }
     typeWriter();
 
-    // Highlight nav link when section is visible
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-links a");
+    const navLinks = document.querySelectorAll(".nav-link");
 
     window.addEventListener("scroll", () => {
       let current = "";
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 150;
+        const sectionTop = section.offsetTop - 200;
         if (pageYOffset >= sectionTop) {
           current = section.getAttribute("id");
         }
