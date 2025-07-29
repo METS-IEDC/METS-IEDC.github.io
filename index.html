@@ -10,10 +10,203 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Abel&family=Michroma&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid #00f;
+      padding-bottom: 0.2rem;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-overlay h2 {
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-overlay p {
+      max-width: 800px;
+      font-size: 1.1rem;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    .dark-blue {
+      background-color: #000;
+    }
+
+    .dark-gradient {
+      background: linear-gradient(145deg, #0d0d0d, #000000);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .swiper-slide:hover img {
+      transform: scale(1.05);
+    }
+
+    .coming-soon {
+      text-align: center;
+      font-size: 1.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
+      border: 1px solid #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #000;
+    }
+
+    .footer-main {
+      font-family: 'Michroma', sans-serif;
+      color: #999;
+      letter-spacing: 0.15em;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-credit {
+      font-family: 'Abel', sans-serif;
+      color: #666;
+      font-size: 0.85rem;
+      margin-top: 0;
+    }
+
+    #cursor {
+      display: inline-block;
+      font-weight: 300;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-overlay h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero-overlay p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header class="header">
     <div class="logo">
       <span id="typed-text"></span><span id="cursor">|</span>
@@ -28,7 +221,6 @@
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
   <section id="hero" class="hero">
     <video autoplay muted loop playsinline>
       <source src="assets/banner.mp4" type="video/mp4" />
@@ -42,18 +234,16 @@
     </div>
   </section>
 
-  <!-- EXECUTIVE COMMITTEE SECTION -->
   <section id="team" class="section dark-blue">
-    <h2>Executive Committee</h2>
-    <div class="team-wrapper">
-      <div class="team-carousel" id="team-carousel"></div>
-      <div class="carousel-indicators" id="carousel-dots"></div>
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Executive Committee</h2>
+    <div class="swiper team-swiper">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
     </div>
   </section>
 
-  <!-- EVENTS SECTION -->
   <section id="events" class="section dark-gradient">
-    <h2>Events</h2>
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Events</h2>
     <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
       <a href="sharktank.html" style="text-decoration: none; color: inherit;">
         <div style="background: #111; border-radius: 12px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; border: 1px solid #444;">
@@ -68,9 +258,8 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
   <section id="contact" class="section dark-blue">
-    <h2>Connect With Us</h2>
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Connect With Us</h2>
     <div class="contact-links">
       <a href="mailto:metscasiedc@gmail.com">Email</a>
       <a href="https://instagram.com/mets_iedc" target="_blank">Instagram</a>
@@ -80,81 +269,12 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p class="footer-main">© 2025 METS IEDC. All rights reserved.</p>
     <p class="footer-credit">Made by Shalan Muneer.</p>
   </footer>
 
-  <!-- SCRIPT: Typewriter -->
-  <script>
-    const typedText = document.getElementById('typed-text');
-    const cursor = document.getElementById('cursor');
-    const fullText1 = "METS College Of Advanced Studies";
-    const fullText2 = "METS IEDC";
-    let text = '', index = 0, state = 'typing1';
-
-    function typeWriter() {
-      if (state === 'typing1') {
-        if (index < fullText1.length) {
-          text += fullText1.charAt(index);
-          typedText.textContent = text;
-          index++;
-          setTimeout(typeWriter, 25);
-        } else {
-          state = 'deleting1';
-          setTimeout(typeWriter, 100);
-        }
-      } else if (state === 'deleting1') {
-        if (index > 0) {
-          text = text.slice(0, -1);
-          typedText.textContent = text;
-          index--;
-          setTimeout(typeWriter, 10);
-        } else {
-          state = 'typing2';
-          index = 0;
-          text = '';
-          setTimeout(typeWriter, 100);
-        }
-      } else if (state === 'typing2') {
-        if (index < fullText2.length) {
-          text += fullText2.charAt(index);
-          typedText.textContent = text;
-          index++;
-          setTimeout(typeWriter, 50);
-        } else {
-          cursor.style.display = "none";
-        }
-      }
-    }
-    typeWriter();
-  </script>
-
-  <!-- SCRIPT: Active Nav -->
-  <script>
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 200) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
-    });
-  </script>
-
-  <!-- SCRIPT: Team Carousel Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     const teamMembers = [
       { img: "1.png", insta: "insta1" },
@@ -166,40 +286,40 @@
       { img: "7.png", insta: "insta7" },
       { img: "8.png", insta: "insta8" },
       { img: "9.png", insta: "insta9" },
-      { img: "10.png", insta: "insta10" },
+      { img: "10.png", insta: "insta10" }
     ];
 
-    const carousel = document.getElementById("team-carousel");
-    const dotsContainer = document.getElementById("carousel-dots");
-
-    teamMembers.forEach((member, index) => {
-      const card = document.createElement("a");
-      card.href = `https://instagram.com/${member.insta}`;
-      card.target = "_blank";
-      card.className = "team-card";
-      card.innerHTML = `<img src="assets/images/${member.img}" alt="Team Member ${index + 1}" />`;
-      carousel.appendChild(card);
-
-      const dot = document.createElement("div");
-      dot.className = "dot" + (index === 0 ? " active" : "");
-      dotsContainer.appendChild(dot);
+    const swiperWrapper = document.querySelector(".team-swiper .swiper-wrapper");
+    teamMembers.forEach(member => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = `
+        <a href="https://instagram.com/${member.insta}" target="_blank">
+          <img src="assets/images/${member.img}" alt="${member.insta}" />
+        </a>
+      `;
+      swiperWrapper.appendChild(slide);
     });
 
-    // Auto-scroll on mobile
-    let currentSlide = 0;
-    function autoScrollCarousel() {
-      const isMobile = window.innerWidth <= 768;
-      if (!isMobile) return;
-
-      const cardWidth = carousel.querySelector(".team-card").offsetWidth + 16;
-      currentSlide = (currentSlide + 1) % teamMembers.length;
-      carousel.scrollTo({ left: currentSlide * cardWidth, behavior: "smooth" });
-
-      dotsContainer.querySelectorAll(".dot").forEach(dot => dot.classList.remove("active"));
-      dotsContainer.children[currentSlide].classList.add("active");
-    }
-
-    setInterval(autoScrollCarousel, 3000);
+    const swiper = new Swiper(".team-swiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      speed: 600,
+      slidesPerView: 3,
+      spaceBetween: 20,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: { slidesPerView: 1.2 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3.2 },
+      },
+    });
   </script>
 </body>
 </html>
