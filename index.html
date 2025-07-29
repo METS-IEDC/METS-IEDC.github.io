@@ -18,17 +18,13 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background-color: #000;
       color: #fff;
       font-family: 'Playfair Display', serif;
     }
-
     .header {
       display: flex;
       justify-content: space-between;
@@ -39,13 +35,20 @@
       top: 0;
       z-index: 1000;
     }
-
     .logo {
       font-family: 'Special Gothic Expanded One', sans-serif;
       font-size: 1.5rem;
       color: #fff;
     }
-
+    #cursor {
+      display: inline-block;
+      font-weight: 300;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
     .nav-links {
       list-style: none;
       display: flex;
@@ -53,33 +56,27 @@
       padding: 0;
       margin: 0;
     }
-
     .nav-links li a {
       color: #fff;
       text-decoration: none;
-      font-family: 'Playfair Display', serif;
       font-weight: 500;
       font-size: 1rem;
     }
-
     .nav-links a.active {
       border-bottom: 2px solid #00f;
       padding-bottom: 0.2rem;
     }
-
     .hero {
       position: relative;
       height: 100vh;
       overflow: hidden;
     }
-
     .hero video {
       position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -94,44 +91,33 @@
       padding: 2rem;
       text-align: center;
     }
-
     .hero-overlay h2 {
       font-family: 'Special Gothic Expanded One', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-
     .hero-overlay p {
       max-width: 800px;
       font-size: 1.1rem;
     }
-
     .section {
       padding: 4rem 2rem;
     }
-
-    .dark-blue {
-      background-color: #000;
-    }
-
-    .dark-gradient {
-      background: linear-gradient(145deg, #0d0d0d, #000000);
-    }
+    .dark-blue { background-color: #000; }
+    .dark-gradient { background: linear-gradient(145deg, #0d0d0d, #000000); }
 
     .swiper-slide img {
       width: 100%;
       border-radius: 0.5rem;
-      transition: transform 0.3s ease;
     }
-
-    .swiper-slide:hover img {
-      transform: scale(1.05);
+    .swiper-slide {
+      opacity: 0.5;
+      transform: scale(0.9);
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
-
-    .coming-soon {
-      text-align: center;
-      font-size: 1.5rem;
-      font-family: 'Playfair Display', serif;
+    .swiper-slide-active {
+      opacity: 1;
+      transform: scale(1.1);
     }
 
     .contact-links {
@@ -141,12 +127,10 @@
       gap: 1.5rem;
       margin-top: 1.5rem;
     }
-
     .contact-links a {
       color: #fff;
       text-decoration: none;
       font-size: 1rem;
-      font-family: 'Playfair Display', serif;
       border: 1px solid #fff;
       padding: 0.5rem 1rem;
       border-radius: 5px;
@@ -157,7 +141,6 @@
       padding: 2rem 1rem;
       background-color: #000;
     }
-
     .footer-main {
       font-family: 'Michroma', sans-serif;
       color: #999;
@@ -165,7 +148,6 @@
       font-size: 0.9rem;
       margin-bottom: 0.3rem;
     }
-
     .footer-credit {
       font-family: 'Abel', sans-serif;
       color: #666;
@@ -173,36 +155,11 @@
       margin-top: 0;
     }
 
-    #cursor {
-      display: inline-block;
-      font-weight: 300;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
     @media (max-width: 768px) {
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .header {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hero-overlay h2 {
-        font-size: 1.8rem;
-      }
-
-      .hero-overlay p {
-        font-size: 0.9rem;
-      }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+      .header { flex-direction: column; align-items: center; }
+      .hero-overlay h2 { font-size: 1.8rem; }
+      .hero-overlay p { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -228,9 +185,7 @@
     </video>
     <div class="hero-overlay">
       <h2>WHAT IS IEDC?</h2>
-      <p>
-        IEDC (Innovation and Entrepreneurship Development Center) is a student-driven initiative that nurtures creativity, entrepreneurship, and innovation among young minds. It acts as a launchpad for new ideas, encouraging students to turn problems into opportunities through real-time tech and business solutions.
-      </p>
+      <p>IEDC (Innovation and Entrepreneurship Development Center) is a student-driven initiative...</p>
     </div>
   </section>
 
@@ -243,19 +198,7 @@
   </section>
 
   <section id="events" class="section dark-gradient">
-    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Events</h2>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
-      <a href="sharktank.html" style="text-decoration: none; color: inherit;">
-        <div style="background: #111; border-radius: 12px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; border: 1px solid #444;">
-          <img src="assets/images/sharktank-thumb.jpg" alt="Shark Tank Poster" style="width: 100%; height: auto;" />
-          <div style="padding: 1rem;">
-            <h3 style="font-family: 'Special Gothic Expanded One', sans-serif; font-size: 1.3rem; margin: 0 0 0.5rem;">Shark Tank</h3>
-            <p style="font-size: 0.95rem; font-family: 'Playfair Display', serif; color: #aaa;">Pitch your innovation, win cash & incubation. Open to students & professionals.</p>
-            <p style="font-size: 0.85rem; color: #6cf;">→ View Details</p>
-          </div>
-        </div>
-      </a>
-    </div>
+    <!-- Events content -->
   </section>
 
   <section id="contact" class="section dark-blue">
@@ -303,23 +246,69 @@
 
     const swiper = new Swiper(".team-swiper", {
       loop: true,
+      centeredSlides: true,
       autoplay: {
         delay: 3000,
         disableOnInteraction: false,
       },
-      speed: 600,
-      slidesPerView: 3,
+      slidesPerView: 1.2,
       spaceBetween: 20,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
       },
       breakpoints: {
-        0: { slidesPerView: 1.2 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3.2 },
+        768: { slidesPerView: 2.2 },
+        1024: { slidesPerView: 1.2 },
       },
     });
+
+    // Typewriter
+    const typedText = document.getElementById('typed-text');
+    const cursor = document.getElementById('cursor');
+    const fullText1 = "METS College Of Advanced Studies";
+    const fullText2 = "METS IEDC";
+    let text = '';
+    let index = 0;
+    let state = 'typing1';
+
+    function typeWriter() {
+      if (state === 'typing1') {
+        if (index < fullText1.length) {
+          text += fullText1.charAt(index);
+          typedText.textContent = text;
+          index++;
+          setTimeout(typeWriter, 25);
+        } else {
+          state = 'deleting1';
+          setTimeout(typeWriter, 100);
+        }
+      } else if (state === 'deleting1') {
+        if (index > 0) {
+          text = text.slice(0, -1);
+          typedText.textContent = text;
+          index--;
+          setTimeout(typeWriter, 10);
+        } else {
+          state = 'typing2';
+          index = 0;
+          text = '';
+          setTimeout(typeWriter, 100);
+        }
+      } else if (state === 'typing2') {
+        if (index < fullText2.length) {
+          text += fullText2.charAt(index);
+          typedText.textContent = text;
+          index++;
+          setTimeout(typeWriter, 50);
+        } else {
+          setTimeout(() => {
+            cursor.style.display = "none";
+          }, 1000);
+        }
+      }
+    }
+    typeWriter();
   </script>
 </body>
 </html>
