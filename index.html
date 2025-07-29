@@ -60,11 +60,12 @@
       font-family: 'Playfair Display', serif;
       font-weight: 500;
       font-size: 1rem;
+      transition: color 0.3s;
     }
 
-    .nav-links a.active {
-      border-bottom: 2px solid #00f;
-      padding-bottom: 0.2rem;
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #6cf;
     }
 
     .hero {
@@ -277,6 +278,26 @@
       }
     }
     typeWriter();
+
+    // Highlight nav link when section is visible
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
 
     new Swiper('.swiper', {
       slidesPerView: 3,
