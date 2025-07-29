@@ -18,13 +18,17 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background-color: #000;
       color: #fff;
       font-family: 'Playfair Display', serif;
     }
+
     .header {
       display: flex;
       justify-content: space-between;
@@ -35,20 +39,13 @@
       top: 0;
       z-index: 1000;
     }
+
     .logo {
       font-family: 'Special Gothic Expanded One', sans-serif;
       font-size: 1.5rem;
       color: #fff;
     }
-    #cursor {
-      display: inline-block;
-      font-weight: 300;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -56,6 +53,7 @@
       padding: 0;
       margin: 0;
     }
+
     .nav-links li a {
       color: #fff;
       text-decoration: none;
@@ -63,21 +61,25 @@
       font-weight: 500;
       font-size: 1rem;
     }
+
     .nav-links a.active {
       border-bottom: 2px solid #00f;
       padding-bottom: 0.2rem;
     }
+
     .hero {
       position: relative;
       height: 100vh;
       overflow: hidden;
     }
+
     .hero video {
       position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -92,80 +94,63 @@
       padding: 2rem;
       text-align: center;
     }
+
     .hero-overlay h2 {
       font-family: 'Special Gothic Expanded One', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
+
     .hero-overlay p {
       max-width: 800px;
       font-size: 1.1rem;
     }
+
+    .swiper {
+      width: 100%;
+      padding: 5rem 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s;
+      opacity: 0.4;
+    }
+
+    .swiper-slide-active {
+      transform: scale(1.2);
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .swiper-slide img {
+      width: 250px;
+      border-radius: 10px;
+    }
+
     .section {
       padding: 4rem 2rem;
     }
-    .dark-blue { background-color: #000; }
-    .dark-gradient { background: linear-gradient(145deg, #0d0d0d, #000000); }
-    
-    .swiper-slide img {
-      width: 100%;
-      border-radius: 0.5rem;
-      transition: transform 0.4s ease;
-    }
-    .swiper-slide {
-      opacity: 0.5;
-      transform: scale(0.9);
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-    .swiper-slide-active {
-      opacity: 1;
-      transform: scale(1.15);
-      z-index: 2;
-    }
-    .coming-soon {
-      text-align: center;
-      font-size: 1.5rem;
-      font-family: 'Playfair Display', serif;
-    }
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    .contact-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-family: 'Playfair Display', serif;
-      border: 1px solid #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-    }
-    .footer {
-      text-align: center;
-      padding: 2rem 1rem;
+
+    .dark-blue {
       background-color: #000;
     }
-    .footer-main {
-      font-family: 'Michroma', sans-serif;
-      color: #999;
-      letter-spacing: 0.15em;
-      font-size: 0.9rem;
-      margin-bottom: 0.3rem;
+
+    .dark-gradient {
+      background: linear-gradient(145deg, #0d0d0d, #000000);
     }
-    .footer-credit {
-      font-family: 'Abel', sans-serif;
-      color: #666;
-      font-size: 0.85rem;
-      margin-top: 0;
+
+    #cursor {
+      display: inline-block;
+      font-weight: 300;
+      animation: blink 1s infinite;
     }
-    @media (max-width: 768px) {
-      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
-      .header { flex-direction: column; align-items: center; }
-      .hero-overlay h2 { font-size: 1.8rem; }
-      .hero-overlay p { font-size: 0.9rem; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
@@ -191,38 +176,48 @@
     </video>
     <div class="hero-overlay">
       <h2>WHAT IS IEDC?</h2>
-      <p>IEDC (Innovation and Entrepreneurship Development Center) is a student-driven initiative...</p>
+      <p>
+        IEDC (Innovation and Entrepreneurship Development Center) is a student-driven initiative that nurtures creativity, entrepreneurship, and innovation among young minds. It acts as a launchpad for new ideas, encouraging students to turn problems into opportunities through real-time tech and business solutions.
+      </p>
     </div>
   </section>
 
   <section id="team" class="section dark-blue">
-    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Executive Committee</h2>
-    <div class="swiper team-swiper">
-      <div class="swiper-wrapper"></div>
-      <div class="swiper-pagination"></div>
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Executive Committee</h2>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><a href="https://instagram.com/user1" target="_blank"><img src="assets/images/1.png" alt="Member 1" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user2" target="_blank"><img src="assets/images/2.png" alt="Member 2" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user3" target="_blank"><img src="assets/images/3.png" alt="Member 3" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user4" target="_blank"><img src="assets/images/4.png" alt="Member 4" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user5" target="_blank"><img src="assets/images/5.png" alt="Member 5" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user6" target="_blank"><img src="assets/images/6.png" alt="Member 6" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user7" target="_blank"><img src="assets/images/7.png" alt="Member 7" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user8" target="_blank"><img src="assets/images/8.png" alt="Member 8" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user9" target="_blank"><img src="assets/images/9.png" alt="Member 9" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/user10" target="_blank"><img src="assets/images/10.png" alt="Member 10" /></a></div>
+      </div>
     </div>
   </section>
 
   <section id="events" class="section dark-gradient">
-    <!-- Events content -->
-  <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Events</h2>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
-    <a href="sharktank.html" style="text-decoration: none; color: inherit;">
-      <div style="background: #111; border-radius: 12px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; border: 1px solid #444;">
-        <img src="assets/images/sharktank-thumb.jpg" alt="Shark Tank Poster" style="width: 100%; height: auto;" />
-        <div style="padding: 1rem;">
-          <h3 style="font-family: 'Special Gothic Expanded One', sans-serif; font-size: 1.3rem; margin: 0 0 0.5rem;">Shark Tank</h3>
-          <p style="font-size: 0.95rem; font-family: 'Playfair Display', serif; color: #aaa;">Pitch your innovation, win cash & incubation. Open to students & professionals.</p>
-          <p style="font-size: 0.85rem; color: #6cf;">→ View Details</p>
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Events</h2>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
+      <a href="sharktank.html" style="text-decoration: none; color: inherit;">
+        <div style="background: #111; border-radius: 12px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; border: 1px solid #444;">
+          <img src="assets/images/sharktank-thumb.jpg" alt="Shark Tank Poster" style="width: 100%; height: auto;" />
+          <div style="padding: 1rem;">
+            <h3 style="font-family: 'Special Gothic Expanded One', sans-serif; font-size: 1.3rem; margin: 0 0 0.5rem;">Shark Tank</h3>
+            <p style="font-size: 0.95rem; font-family: 'Playfair Display', serif; color: #aaa;">Pitch your innovation, win cash & incubation. Open to students & professionals.</p>
+            <p style="font-size: 0.85rem; color: #6cf;">→ View Details</p>
+          </div>
         </div>
-      </div>
-    </a>
-  </div>
-</section>
+      </a>
+    </div>
   </section>
 
   <section id="contact" class="section dark-blue">
-    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif;">Connect With Us</h2>
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Connect With Us</h2>
     <div class="contact-links">
       <a href="mailto:metscasiedc@gmail.com">Email</a>
       <a href="https://instagram.com/mets_iedc" target="_blank">Instagram</a>
@@ -239,51 +234,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    const teamMembers = [
-      { img: "1.png", insta: "insta1" },
-      { img: "2.png", insta: "insta2" },
-      { img: "3.png", insta: "insta3" },
-      { img: "4.png", insta: "insta4" },
-      { img: "5.png", insta: "insta5" },
-      { img: "6.png", insta: "insta6" },
-      { img: "7.png", insta: "insta7" },
-      { img: "8.png", insta: "insta8" },
-      { img: "9.png", insta: "insta9" },
-      { img: "10.png", insta: "insta10" }
-    ];
-
-    const swiperWrapper = document.querySelector(".team-swiper .swiper-wrapper");
-    teamMembers.forEach(member => {
-      const slide = document.createElement("div");
-      slide.className = "swiper-slide";
-      slide.innerHTML = `
-        <a href="https://instagram.com/${member.insta}" target="_blank">
-          <img src="assets/images/${member.img}" alt="${member.insta}" />
-        </a>
-      `;
-      swiperWrapper.appendChild(slide);
-    });
-
-    const swiper = new Swiper(".team-swiper", {
-      loop: true,
-      centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      slidesPerView: 1.2,
-      spaceBetween: 20,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        768: { slidesPerView: 2.2 },
-        1024: { slidesPerView: 3 },
-      },
-    });
-
-    // Typewriter
     const typedText = document.getElementById('typed-text');
     const cursor = document.getElementById('cursor');
     const fullText1 = "METS College Of Advanced Studies";
@@ -327,6 +277,23 @@
       }
     }
     typeWriter();
+
+    new Swiper('.swiper', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      breakpoints: {
+        320: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
   </script>
 </body>
 </html>
