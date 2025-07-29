@@ -180,6 +180,7 @@ nav {
   gap: 1rem;
   transition: transform 0.5s ease;
   scroll-behavior: smooth;
+  align-items: center;
 }
 
 .team-card {
@@ -189,30 +190,46 @@ nav {
   overflow: hidden;
   background-color: #111;
   border: 1px solid #333;
-  transition: transform 0.3s ease;
-}
-
-.team-card:hover {
-  transform: scale(1.05);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.4;
+  transform: scale(0.85);
 }
 
 .team-card img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
 }
 
+.team-card.active {
+  opacity: 1;
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  opacity: 1 !important;
+}
+
+/* DESKTOP GRID */
 @media (min-width: 769px) {
   .team-carousel {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
   }
+
   .team-card {
     width: 100%;
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
+/* MOBILE SLIDER */
 @media (max-width: 768px) {
   .team-wrapper {
     overflow-x: auto;
