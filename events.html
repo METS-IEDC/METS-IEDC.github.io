@@ -3,38 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gallery – METS IEDC</title>
+  <title>Events – METS IEDC</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Abel&family=Michroma&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background: #000;
       color: #fff;
       font-family: 'Playfair Display', serif;
       margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 2rem;
-      font-family: 'Special Gothic Expanded One', sans-serif;
-      background-color: #111;
-      border-bottom: 1px solid #333;
+    .sidebar-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 12px rgba(255,255,255,0.08);
+      transition: background 0.3s;
     }
 
-    .gallery-section {
+    .sidebar-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      margin: 4px 0;
+    }
+
+    .sidebar {
+      width: 240px;
+      max-width: 85vw;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(18px);
+      padding: 1.2rem;
+      border-radius: 20px;
+      border: 1px solid #333;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+      z-index: 99;
+      transform: scale(0);
+      transform-origin: top left;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+      transform: scale(1);
+    }
+
+    .search-bar {
+      margin-bottom: 1.2rem;
+    }
+
+    .sidebar input {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      font-family: 'Abel', sans-serif;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .event-link {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Abel', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      transition: 0.3s;
+      backdrop-filter: blur(6px);
+    }
+
+    .event-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .main-content {
       padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .event-card {
       background-color: #111;
       border: 1px solid #222;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 2rem;
       overflow: hidden;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
     }
 
     .event-card h2 {
@@ -48,6 +129,8 @@
 
     .event-description {
       padding: 1rem;
+      font-family: 'Abel', sans-serif;
+      font-size: 1rem;
       line-height: 1.6;
     }
 
@@ -78,7 +161,7 @@
       right: 1rem;
       background: rgba(0, 0, 0, 0.6);
       padding: 0.8rem 1rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       border-radius: 8px;
       font-family: 'Abel', sans-serif;
     }
@@ -94,27 +177,41 @@
 </head>
 <body>
 
-<header>Gallery – METS IEDC</header>
+<!-- Toggle Button -->
+<button class="sidebar-toggle" onclick="toggleSidebar()">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
-<section class="gallery-section">
-  <div class="event-card">
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search events...">
+  </div>
+  <a href="#event1" class="event-link" data-title="iedc inauguration">IEDC Inauguration</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="event-card" id="event1" data-title="iedc inauguration">
     <h2>IEDC Inauguration & Introduction</h2>
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="assets/intro1.jpg" alt="Intro Slide 1">
+          <img src="assets/intro1.jpg" alt="Slide 1">
           <div class="slide-caption">Mohammed Faheem sharing his success story with juniors</div>
         </div>
         <div class="swiper-slide">
-          <img src="assets/intro2.jpg" alt="Intro Slide 2">
+          <img src="assets/intro2.jpg" alt="Slide 2">
           <div class="slide-caption">Students attentively engaging in the IEDC session</div>
         </div>
         <div class="swiper-slide">
-          <img src="assets/intro3.jpg" alt="Intro Slide 3">
+          <img src="assets/intro3.jpg" alt="Slide 3">
           <div class="slide-caption">IEDC members explaining opportunities for innovation</div>
         </div>
         <div class="swiper-slide">
-          <img src="assets/intro4.jpg" alt="Intro Slide 4">
+          <img src="assets/intro4.jpg" alt="Slide 4">
           <div class="slide-caption">New students interacting during the launch event</div>
         </div>
       </div>
@@ -123,18 +220,29 @@
       Our inauguration and introduction session was held to welcome new members and introduce the mission of IEDC to the juniors. The session featured inspirational talks, interactive Q&A, and startup experiences.
     </div>
   </div>
-</section>
 
-<footer>© 2025 METS IEDC. All rights reserved.</footer>
+  <footer>© 2025 METS IEDC. All rights reserved.</footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   new Swiper('.swiper', {
     loop: true,
-    autoplay: {
-      delay: 4000,
-    },
+    autoplay: { delay: 4000 },
     speed: 900,
+  });
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+  }
+
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    document.querySelectorAll('.event-link').forEach(link => {
+      const title = link.getAttribute('data-title') || '';
+      link.style.display = title.includes(query) ? 'inline-block' : 'none';
+    });
   });
 </script>
 
