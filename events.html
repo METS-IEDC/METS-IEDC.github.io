@@ -12,6 +12,8 @@
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
@@ -19,25 +21,80 @@
       background: #000;
       color: #fff;
       font-family: 'Playfair Display', serif;
-      margin: 0;
-      min-height: 100vh;
       overflow-x: hidden;
     }
 
-    .sidebar-toggle {
+    /* =====================
+       NAVBAR + HAMBURGER
+    ====================== */
+    header {
       position: fixed;
-      top: 1rem;
-      left: 1rem;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #222;
       z-index: 999;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      font-size: 1.3rem;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) infinite, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      0% { width: 0 }
+      50% { width: 13ch }
+      100% { width: 0 }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Abel', sans-serif;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ccc;
+    }
+
+    .sidebar-toggle {
       background: none;
       border: none;
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 6px;
       cursor: pointer;
     }
 
@@ -61,13 +118,16 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
 
+    /* =====================
+       SIDEBAR
+    ====================== */
     .sidebar {
       width: 260px;
       max-width: 85vw;
       position: fixed;
-      top: 1rem;
+      top: 70px;
       left: 1rem;
-      background: rgba(15, 15, 15, 0.9);
+      background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(14px);
       padding: 1.4rem;
       border-radius: 16px;
@@ -84,10 +144,6 @@
 
     .sidebar.active {
       transform: scale(1);
-    }
-
-    .search-bar {
-      flex-shrink: 0;
     }
 
     .sidebar input {
@@ -122,8 +178,11 @@
       border-color: rgba(255,255,255,0.1);
     }
 
+    /* =====================
+       MAIN CONTENT
+    ====================== */
     .main-content {
-      padding: 2rem 1rem;
+      padding: 7rem 1rem 2rem;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -192,16 +251,31 @@
       color: #888;
       font-family: 'Michroma', sans-serif;
     }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- Toggle Button -->
-<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+<!-- Navbar -->
+<header>
+  <div class="logo"><span class="typewriter">METS IEDC</span></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
@@ -243,6 +317,7 @@
   <footer>© 2025 METS IEDC. All rights reserved.</footer>
 </div>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper('.swiper', {
