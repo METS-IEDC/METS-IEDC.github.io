@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IEDC Event Gallery">
+  <meta name="author" content="METS IEDC Team">
+  <title>IEDC Gallery</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      position: relative;
+      background-color: #111;
+      color: white;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      left: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 20px;
+    }
+    .sidebar-toggle span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-family: 'Special Gothic Expanded One', sans-serif;
+    }
+
+    .nav-links {
+      position: absolute;
+      right: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #111;
+      color: white;
+      padding: 1rem;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 0.5rem 0;
+      text-decoration: none;
+    }
+    .search-bar {
+      margin-bottom: 1rem;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+      position: sticky;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="logo">METS IEDC</div>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search events...">
+    </div>
+    <a href="index.html#home" class="event-link">Home</a>
+    <a href="index.html#events" class="event-link">Events</a>
+    <a href="index.html#contact" class="event-link">Contact</a>
+    <hr style="border: 1px solid #333;" />
+    <a href="#event1" class="event-link" data-title="iedc inauguration">IEDC Inauguration</a>
+  </div>
+
+  <main class="main-content">
+    <div class="event-card" id="event1">
+      <h2>IEDC Inauguration & Introduction</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="assets/intro1.jpg" alt="Mohammed Faheem sharing his success story">
+            <div class="slide-caption">Mohammed Faheem sharing his success story with juniors</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/intro2.jpg" alt="Students engaging in the session">
+            <div class="slide-caption">Students attentively engaging in the IEDC session</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/intro3.jpg" alt="Members explaining opportunities">
+            <div class="slide-caption">IEDC members explaining opportunities for innovation</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/intro4.jpg" alt="Students interacting">
+            <div class="slide-caption">New students interacting during the launch event</div>
+          </div>
+        </div>
+      </div>
+      <div class="event-description">
+        Our inauguration and introduction session was held to welcome new members and introduce the mission of IEDC to the juniors. The session featured inspirational talks, interactive Q&A, and startup experiences.
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-main">© 2025 METS IEDC. All rights reserved.</p>
+    <p class="footer-credit">Made by Shalan Muneer.</p>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
