@@ -16,13 +16,7 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background-color: #000;
-      color: white;
-    }
-
+    /* Header Styles */
     header {
       display: flex;
       justify-content: center;
@@ -31,7 +25,11 @@
       position: relative;
       background-color: #111;
       color: white;
-      z-index: 1001;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-family: 'Special Gothic Expanded One', sans-serif;
     }
 
     .sidebar-toggle {
@@ -40,21 +38,17 @@
       background: none;
       border: none;
       cursor: pointer;
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: space-between;
       height: 20px;
     }
+
     .sidebar-toggle span {
       display: block;
       width: 25px;
       height: 3px;
       background-color: white;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-family: 'Special Gothic Expanded One', sans-serif;
     }
 
     .nav-links {
@@ -70,6 +64,7 @@
       font-size: 1rem;
     }
 
+    /* Sidebar Styles */
     .sidebar {
       position: fixed;
       top: 0;
@@ -103,56 +98,9 @@
       width: 100%;
       padding: 0.5rem;
       font-size: 1rem;
-      background: #222;
-      color: white;
-      border: 1px solid #333;
     }
 
-    .main-content {
-      padding: 2rem 1rem;
-    }
-
-    .event-card {
-      margin-bottom: 3rem;
-    }
-
-    .event-card h2 {
-      font-family: 'Special Gothic Expanded One', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .swiper {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto 1rem;
-    }
-
-    .swiper-slide {
-      position: relative;
-    }
-
-    .swiper-slide img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .slide-caption {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 0.3rem;
-      color: #ccc;
-    }
-
-    .event-description {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1rem;
-      text-align: center;
-    }
-
+    /* Footer Styles */
     .footer {
       background: #111;
       color: #aaa;
@@ -160,17 +108,21 @@
       padding: 1rem;
       position: sticky;
       bottom: 0;
+      z-index: -1;
     }
 
+    /* Responsive Styles */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
+      }
+      .sidebar-toggle {
+        display: flex;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">
       <span></span>
@@ -190,11 +142,11 @@
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search events...">
     </div>
-    <a href="index.html#home">Home</a>
-    <a href="index.html#events">Events</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="index.html#home" class="event-link">Home</a>
+    <a href="index.html#events" class="event-link">Events</a>
+    <a href="index.html#contact" class="event-link">Contact</a>
     <hr style="border: 1px solid #333;" />
-    <a href="#event1">IEDC Inauguration</a>
+    <a href="#event1" class="event-link" data-title="iedc inauguration">IEDC Inauguration</a>
   </div>
 
   <!-- Main Content -->
@@ -205,24 +157,24 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <img src="assets/intro1.jpg" alt="Mohammed Faheem sharing his success story">
-            <div class="slide-caption">Mohammed Faheem sharing his success story</div>
+            <div class="slide-caption">Mohammed Faheem sharing his success story with juniors</div>
           </div>
           <div class="swiper-slide">
             <img src="assets/intro2.jpg" alt="Students engaging in the session">
-            <div class="slide-caption">Students engaging in the session</div>
+            <div class="slide-caption">Students attentively engaging in the IEDC session</div>
           </div>
           <div class="swiper-slide">
             <img src="assets/intro3.jpg" alt="Members explaining opportunities">
-            <div class="slide-caption">Members explaining innovation opportunities</div>
+            <div class="slide-caption">IEDC members explaining opportunities for innovation</div>
           </div>
           <div class="swiper-slide">
             <img src="assets/intro4.jpg" alt="Students interacting">
-            <div class="slide-caption">Students interacting during the launch</div>
+            <div class="slide-caption">New students interacting during the launch event</div>
           </div>
         </div>
       </div>
       <div class="event-description">
-        Our inauguration and introduction session welcomed new members and introduced the mission of IEDC to juniors. It featured inspirational talks, Q&A, and startup journeys.
+        Our inauguration and introduction session was held to welcome new members and introduce the mission of IEDC to the juniors. The session featured inspirational talks, interactive Q&A, and startup experiences.
       </div>
     </div>
   </main>
