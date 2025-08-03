@@ -12,6 +12,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Playfair Display', serif;
             background-color: #000;
@@ -62,8 +65,19 @@
             background: radial-gradient(circle at 50% 50%, rgba(108, 207, 255, 0.1), transparent 70%);
             animation: subtle-fade 10s infinite ease-in-out;
         }
+        /* New mobile menu styles */
+        #mobile-menu {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         #mobile-menu.active {
-            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
         }
         @media (max-width: 768px) {
             .mobile-menu-items {
@@ -96,6 +110,32 @@
             visibility: visible;
             transition: opacity 0.5s ease;
         }
+        /* FAQ Section Styles */
+        .faq-item {
+            border-bottom: 1px solid #333;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 1.5rem 0;
+        }
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        .faq-toggle.rotated {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .faq-answer.expanded {
+            max-height: 1000px; /* A large value to allow for transition */
+            padding-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body class="bg-black">
@@ -115,6 +155,7 @@
                         <a href="#hero" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium transition-smooth">Home</a>
                         <a href="#team" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium transition-smooth">Team</a>
                         <a href="events.html" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium transition-smooth">Gallery</a>
+                        <a href="#faq" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium transition-smooth">FAQ</a>
                         <a href="#contact" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium transition-smooth">Connect</a>
                     </div>
                 </div>
@@ -126,39 +167,43 @@
                 </div>
             </div>
         </div>
-
-        <div id="mobile-menu" class="md:hidden transform -translate-y-full transition-transform duration-300 ease-in-out absolute top-16 left-0 w-full bg-black bg-opacity-90">
-            <div class="px-2 pt-2 pb-3 space-y-1 text-center mobile-menu-items">
-                <a href="#hero" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-base font-medium transition-smooth">Home</a>
-                <a href="#team" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-base font-medium transition-smooth">Team</a>
-                <a href="events.html" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-base font-medium transition-smooth">Gallery</a>
-                <a href="#contact" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-base font-medium transition-smooth">Connect</a>
-            </div>
-        </div>
     </nav>
     <div class="h-16"></div> 
     
-    <section class="py-20 flex items-center justify-center min-h-[90vh] relative">
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 transition-smooth z-50">
+        <div class="px-4 py-8 text-right absolute top-0 right-0">
+            <button id="mobile-menu-close" class="text-white text-4xl">&times;</button>
+        </div>
+        <div class="px-2 pt-2 pb-3 space-y-1 text-center mobile-menu-items">
+            <a href="index.html#hero" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-xl font-medium transition-smooth" onclick="closeMobileMenu()">Home</a>
+            <a href="index.html#team" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-xl font-medium transition-smooth" onclick="closeMobileMenu()">Team</a>
+            <a href="events.html" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-xl font-medium transition-smooth" onclick="closeMobileMenu()">Gallery</a>
+            <a href="#faq" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-xl font-medium transition-smooth" onclick="closeMobileMenu()">FAQ</a>
+            <a href="index.html#contact" class="block text-white nav-link hover:bg-gray-800 px-3 py-2 rounded-md text-xl font-medium transition-smooth" onclick="closeMobileMenu()">Connect</a>
+        </div>
+    </div>
+    
+    <section id="hero" class="py-20 flex items-center justify-center min-h-[90vh] relative">
         <div id="hero-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left" data-depth="0.2">
-                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl" data-depth="0.3">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
                         <span class="block">Your AI Companion</span>
-                        <span class="block text-blue-iedc header-font" data-depth="0.4">for Anything</span>
+                        <span class="block text-blue-iedc header-font">for Anything</span>
                     </h1>
-                    <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0" data-depth="0.2">
+                    <p class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                         ChatWithIEDC is a powerful AI assistant designed to help you with research, creative writing, coding, and more. Think of me as your all-in-one partner.
                     </p>
-                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0" data-depth="0.1">
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <a href="#" onclick="showComingSoon(event)" class="inline-block px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-blue-iedc hover:bg-opacity-80 md:py-4 md:text-lg md:px-10 transition-smooth">
                             Try ChatWithIEDC
                         </a>
                     </div>
                 </div>
-                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center" data-depth="0.5">
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
                     <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
                         <div class="relative block w-full rounded-lg overflow-hidden border-2 border-gray-700 transition-smooth" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
-                            <img class="w-full" src="assets/images/Chatbo_logo.jpg" alt="ChatWithIEDC logo">
+                            <img class="w-full" src="assets/images/chatbo_logo.jpg" alt="ChatWithIEDC logo">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 p-6">
                                 <h3 class="text-lg font-medium text-white">Your AI-powered guide for any task</h3>
@@ -171,7 +216,7 @@
         </div>
     </section>
 
-    <section class="py-16 bg-gray-900">
+    <section id="capabilities" class="py-16 bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
                 <h2 class="text-base text-blue-iedc font-semibold tracking-wide uppercase">Core Capabilities</h2>
@@ -217,7 +262,57 @@
         </div>
     </section>
 
-    <footer class="bg-black border-t border-gray-700 mt-20">
+    <section id="faq" class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base text-blue-iedc font-semibold tracking-wide uppercase">FAQs</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Frequently Asked Questions
+                </p>
+            </div>
+            
+            <div class="mt-12 space-y-8">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-lg text-white font-medium header-font">What is ChatWithIEDC?</h3>
+                        <span class="text-blue-iedc text-3xl font-bold faq-toggle transition-smooth">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-400 text-lg">ChatWithIEDC is an advanced AI assistant powered by our custom-built models. It's designed to provide instant, conversational help for a variety of tasks, from creative writing to complex coding challenges.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-lg text-white font-medium header-font">How does it work?</h3>
+                        <span class="text-blue-iedc text-3xl font-bold faq-toggle transition-smooth">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-400 text-lg">I use a sophisticated large language model to understand your queries and generate human-like responses. The AI processes your input, analyzes the context, and formulates a helpful, informative, or creative answer.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-lg text-white font-medium header-font">Is my data safe with ChatWithIEDC?</h3>
+                        <span class="text-blue-iedc text-3xl font-bold faq-toggle transition-smooth">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-400 text-lg">We take your privacy seriously. All interactions are processed with a strong focus on data security. We do not store personal information unless explicitly required for the service and adhere to strict privacy protocols.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-lg text-white font-medium header-font">What kind of tasks can it help me with?</h3>
+                        <span class="text-blue-iedc text-3xl font-bold faq-toggle transition-smooth">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-400 text-lg">ChatWithIEDC is a versatile tool for brainstorming, content creation, summarizing documents, writing code, generating ideas, and much more. Whatever your challenge, I'm here to help you get started.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-black border-t border-gray-700 mt-20">
         <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
             <p class="text-center text-base text-gray-400">
                 &copy; 2025 ChatWithIEDC. All rights reserved.
@@ -233,8 +328,22 @@
         // Navbar toggle for mobile
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+        }
+
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
         });
 
         // "Coming Soon" message function
@@ -247,38 +356,15 @@
             }, 3000); 
         }
 
-        // Parallax and 3D hover effect
-        const heroContainer = document.getElementById('hero-container');
-        heroContainer.addEventListener('mousemove', (e) => {
-            const rect = heroContainer.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            heroContainer.querySelectorAll('[data-depth]').forEach(el => {
-                const depth = el.getAttribute('data-depth');
-                const translate3dX = (x - centerX) * depth * 0.5;
-                const translate3dY = (y - centerY) * depth * 0.5;
-                el.style.transform = `translate3d(${translate3dX}px, ${translate3dY}px, 0)`;
-            });
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const toggle = item.querySelector('.faq-toggle');
 
-            const card = document.querySelector('.relative.block');
-            if (card) {
-                const cardRotateY = (x - centerX) / centerX * 3;
-                const cardRotateX = (centerY - y) / centerY * 3;
-                card.style.transform = `perspective(1000px) rotateY(${cardRotateY}deg) rotateX(${cardRotateX}deg)`;
-            }
-        });
-
-        heroContainer.addEventListener('mouseleave', () => {
-            heroContainer.querySelectorAll('[data-depth]').forEach(el => {
-                el.style.transform = `translate3d(0, 0, 0)`;
+                answer.classList.toggle('expanded');
+                toggle.classList.toggle('rotated');
             });
-            const card = document.querySelector('.relative.block');
-            if (card) {
-                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
-            }
         });
     </script>
 </body>
