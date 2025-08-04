@@ -33,63 +33,95 @@ a {
 }
 
 /* ===========================
-   HEADER & NAV
+    HEADER & NAV
 =========================== */
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem 2rem;
-  background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem 2rem;
+    background: #111;
 }
 
 .logo {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: white;
-  letter-spacing: 1.2px;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1.2px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 #cursor {
-  font-weight: 300;
-  animation: blink 1s infinite;
+    font-weight: 300;
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 nav {
-  text-align: center;
-  width: 100%;
+    text-align: center;
+    width: 100%;
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.2rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 .nav-links li a {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: white;
-  transition: 0.3s;
-  letter-spacing: 0.5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
-  color: #00bcd4;
+    color: #00bcd4;
+}
+
+/* ===========================
+    Fix for Mobile
+=========================== */
+@media (max-width: 400px) {
+    .header {
+        flex-direction: row; /* Puts logo and nav on the same row */
+        justify-content: space-between;
+    }
+    
+    nav {
+        width: auto;
+        overflow-x: auto; /* Allows horizontal scrolling */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links {
+        flex-wrap: nowrap; /* Forces links to stay on a single line */
+        justify-content: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .nav-links li a {
+        font-size: 0.9rem;
+        padding: 0.2rem;
+        white-space: nowrap; /* Prevents text inside links from wrapping */
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
 }
 
 /* ===========================
