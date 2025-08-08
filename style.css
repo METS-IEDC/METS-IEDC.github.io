@@ -1,10 +1,10 @@
 /* ===========================
-    GOOGLE FONT IMPORTS
+   GOOGLE FONT IMPORTS
 =========================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Michroma&family=Abel&display=swap');
 
 /* ===========================
-    RESET + BASE STYLES
+   RESET + BASE STYLES
 =========================== */
 * {
   margin: 0;
@@ -12,15 +12,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  margin: 0;
-  background-color: #000;
-  color: #fff;
   font-family: 'Playfair Display', serif;
+  background-color: #000;
+  color: white;
   line-height: 1.6;
 }
 
@@ -35,31 +30,102 @@ h1, h2, h3, h4, h5, h6,
 a {
   color: #00bcd4;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
 /* ===========================
     HEADER & NAV
-    (Global styles for header/nav are handled by index.html's <style> block.
-     Only mobile-specific overrides are in the media queries below.)
 =========================== */
-/* Important: No global .header, .logo, nav, .nav-links styles here in style.css
-   to avoid conflicts with your index.html's inline <style> block.
-   Desktop layout for these elements is managed by index.html. */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem 2rem;
+    background: #111;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1.2px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
 
 #cursor {
-  display: inline-block;
-  font-weight: 300;
-  animation: blink 1s infinite;
+    font-weight: 300;
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+nav {
+    text-align: center;
+    width: 100%;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.nav-links li a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: #00bcd4;
 }
 
 /* ===========================
-    HERO SECTION (VIDEO)
+    Fix for Mobile
+=========================== */
+@media (max-width: 400px) {
+    .header {
+        flex-direction: row; /* Puts logo and nav on the same row */
+        justify-content: space-between;
+    }
+    
+    nav {
+        width: auto;
+        overflow-x: auto; /* Allows horizontal scrolling */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links {
+        flex-wrap: nowrap; /* Forces links to stay on a single line */
+        justify-content: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .nav-links li a {
+        font-size: 0.9rem;
+        padding: 0.2rem;
+        white-space: nowrap; /* Prevents text inside links from wrapping */
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+}
+
+/* ===========================
+   HERO SECTION (VIDEO)
 =========================== */
 .hero {
   position: relative;
@@ -68,7 +134,6 @@ a {
 }
 
 .hero video {
-  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -76,44 +141,44 @@ a {
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
+  border-radius: 12px;
   text-align: center;
 }
 
 .hero-overlay h2 {
-  font-family: 'Special Gothic Expanded One', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
 }
 
-.hero-overlay p {
-  max-width: 800px;
-  font-size: 1.1rem;
+.hero-overlay h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  margin: 0.5rem auto 0;
+  border-bottom: 2px solid #00bcd4;
 }
 
 /* ===========================
-    SECTIONS
+   SECTIONS
 =========================== */
 .section {
   padding: 4rem 2rem;
   text-align: center;
-}
-
-.dark-blue {
   background-color: #000;
 }
 
+.dark-blue,
 .dark-gradient {
-  background: linear-gradient(145deg, #0d0d0d, #000000);
+  background-color: #000 !important;
 }
 
 .section h2 {
@@ -134,74 +199,139 @@ a {
 }
 
 /* ===========================
-    EXECUTIVE TEAM CAROUSEL (SWIPER)
-    --- THIS SECTION IS MODIFIED FOR DESKTOP GRID LAYOUT ---
+   EXECUTIVE TEAM CAROUSEL
 =========================== */
-.swiper {
-  width: 100%;
-  padding: 5rem 0;
+.team-wrapper {
+  overflow: hidden;
+  position: relative;
+  margin-top: 2rem;
 }
 
-.swiper-slide {
+.team-carousel {
   display: flex;
-  justify-content: center;
+  gap: 1rem;
+  transition: transform 0.5s ease;
+  scroll-behavior: smooth;
   align-items: center;
-  transition: transform 0.3s, opacity 0.3s;
-  opacity: 0.3; /* Default for Swiper.js carousel effect on mobile */
+  justify-content: center;
 }
 
-.swiper-slide-active {
-  transform: scale(1.2); /* Default for Swiper.js carousel effect on mobile */
+.team-card {
+  flex: 0 0 auto;
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #111;
+  border: 1px solid #333;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.4;
+  transform: scale(0.85);
+  cursor: pointer;
+}
+
+.team-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+}
+
+.team-card.active {
   opacity: 1;
+  transform: scale(1.15);
   z-index: 10;
 }
 
-.swiper-slide img {
-  width: 250px;
-  border-radius: 10px;
+.team-card:hover {
+  transform: scale(1.05);
+  opacity: 1 !important;
 }
 
+/* DESKTOP GRID */
+@media (min-width: 769px) {
+  .team-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .team-card {
+    width: 100%;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* MOBILE SLIDER */
+@media (max-width: 768px) {
+  .team-wrapper {
+    overflow-x: auto;
+  }
+
+  .team-carousel {
+    flex-wrap: nowrap;
+    animation: scroll-horizontal 20s linear infinite;
+  }
+
+  @keyframes scroll-horizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .team-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .team-carousel:hover {
+    animation-play-state: paused;
+  }
+
+  .team-card {
+    scroll-snap-align: center;
+  }
+}
 
 /* ===========================
-    EVENTS
+   DOT INDICATORS
 =========================== */
-.event-card {
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-  max-width: 300px;
-  transition: transform 0.3s ease;
-  border: 1px solid #444;
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.event-card:hover {
-  transform: translateY(-5px);
+.carousel-indicators .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #666;
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.event-card img {
-  width: 100%;
-  height: auto;
-}
-
-.event-card h3 {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 1.3rem;
-  margin: 0 0 0.5rem;
-}
-
-.event-card p {
-  font-size: 0.95rem;
-  font-family: 'Playfair Display', serif;
-  color: #aaa;
+.carousel-indicators .dot.active {
+  background: #00bcd4;
+  opacity: 1;
+  transform: scale(1.3);
 }
 
 /* ===========================
-    CONTACT SECTION
+   EVENTS
+=========================== */
+.coming-soon {
+  font-size: 1.5rem;
+  color: #bbb;
+}
+
+/* ===========================
+   CONTACT SECTION
 =========================== */
 .contact-links {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -221,16 +351,16 @@ a {
 }
 
 /* ===========================
-    FOOTER
+   FOOTER
 =========================== */
 .footer {
+  background: #0b0b0b;
+  padding: 2rem;
   text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #666;
+  color: #aaa;
 }
 
-.footer-main {
+.footer .copyright {
   font-family: 'Michroma', sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
@@ -238,106 +368,41 @@ a {
   color: #888;
 }
 
-.footer-credit {
+.footer .credit {
   font-family: 'Abel', sans-serif;
   font-size: 0.8rem;
   color: #888;
 }
 
 /* ===========================
-    MEDIA QUERIES
+   MEDIA QUERIES
 =========================== */
-
-/* --- Mobile / Tablet styles (up to 768px) --- */
 @media (max-width: 768px) {
-  /* Header & Nav overrides for mobile */
   .header {
-    flex-direction: column; /* Stacks logo and nav vertically */
-    padding: 1rem 1.5rem; /* Adjusted padding */
-    gap: 1rem; /* Space between logo and nav */
+    padding: 1rem 2rem;
   }
 
-  nav {
-    width: 100%; /* Nav takes full width for horizontal scroll */
-    overflow-x: auto; /* Enable horizontal scrolling for nav links */
-    -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
-    padding-bottom: 0.5rem; /* Add some padding for scrollbar visibility */
-  }
-
-  /* Hide scrollbar for a cleaner look on mobile */
-  nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-links {
-    flex-wrap: nowrap; /* Forces links to stay on a single line for horizontal scroll */
-    justify-content: center; /* Center them within the scrollable nav */
-    gap: 1rem; /* Smaller gap for mobile */
-  }
-
-  .nav-links li a {
-    font-size: 0.9rem; /* Smaller font for links */
-    padding: 0.2rem 0.5rem; /* Add some padding around text */
-  }
-
-  .logo {
-    font-size: 1.8rem; /* Smaller logo for mobile */
-  }
-
-  /* Hero Section */
   .hero-overlay h2 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
-  .hero-overlay p {
-    font-size: 1rem;
-  }
-
-  /* Executive Committee (Swiper) on Mobile */
-  .swiper-slide img {
-    width: 200px; /* Smaller images in swiper for mobile */
-  }
-
-  .swiper-slide-active {
-    transform: scale(1.1); /* Less aggressive scaling for active slide */
-  }
-
-  .swiper {
-    padding: 3rem 0; /* Reduced padding for swiper section */
-  }
-
-  /* General sections */
   .section h2 {
     font-size: 1.8rem;
   }
 }
 
-/* --- Desktop / Larger Tablet styles (min-width: 769px) --- */
-@media (min-width: 769px) {
-  /* Executive Committee (Swiper) - Force Grid-like display on desktop */
-  .swiper-wrapper {
-    display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columns responsive, adjust minmax as needed */
-    gap: 2rem; /* Gap between grid items */
-    transform: none !important; /* Crucial: Override Swiper's inline transforms */
-    width: 100% !important; /* Ensure wrapper takes full width */
-    height: auto !important; /* Adjust height dynamically */
-    align-items: flex-start; /* Align items to the top of their grid cell */
-    justify-content: center; /* Center the grid if items don't fill the row */
+@media (max-width: 400px) {
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .swiper-slide {
-    width: auto !important; /* Allow grid to control width */
-    opacity: 1 !important; /* Make all slides fully visible */
-    transform: scale(1) !important; /* Reset any scaling from Swiper */
-    transition: none !important; /* Disable transitions that interfere with static grid */
-    flex-shrink: 0; /* Prevent shrinking if flexbox is still applied by Swiper */
-    margin: 0 !important; /* Remove any Swiper margins */
+  .nav-links li a {
+    font-size: 0.9rem;
+    padding: 0.2rem;
   }
 
-  .swiper-slide-active {
-    transform: scale(1) !important; /* Ensure active slide is also regular size */
-    opacity: 1 !important;
-    z-index: auto !important; /* Reset z-index */
+  .logo {
+    font-size: 2rem;
   }
 }
