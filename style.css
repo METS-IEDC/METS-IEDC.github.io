@@ -40,12 +40,12 @@ a {
 
 /* ===========================
     HEADER & NAV
-    (These styles remain as in your provided index.html's <style> block,
-     so no changes are explicitly made here to avoid conflict.
-     The mobile overrides are in the media queries section below.)
+    (Global styles for header/nav are handled by index.html's <style> block.
+     Only mobile-specific overrides are in the media queries below.)
 =========================== */
-/* No global .header, .logo, nav, .nav-links styles here to avoid conflicts.
-   These are handled by the <style> block in index.html for desktop. */
+/* Important: No global .header, .logo, nav, .nav-links styles here in style.css
+   to avoid conflicts with your index.html's inline <style> block.
+   Desktop layout for these elements is managed by index.html. */
 
 #cursor {
   display: inline-block;
@@ -147,11 +147,11 @@ a {
   justify-content: center;
   align-items: center;
   transition: transform 0.3s, opacity 0.3s;
-  opacity: 0.3; /* Default for Swiper.js carousel effect */
+  opacity: 0.3; /* Default for Swiper.js carousel effect on mobile */
 }
 
 .swiper-slide-active {
-  transform: scale(1.2); /* Default for Swiper.js carousel effect */
+  transform: scale(1.2); /* Default for Swiper.js carousel effect on mobile */
   opacity: 1;
   z-index: 10;
 }
@@ -250,7 +250,7 @@ a {
 
 /* --- Mobile / Tablet styles (up to 768px) --- */
 @media (max-width: 768px) {
-  /* Header & Nav */
+  /* Header & Nav overrides for mobile */
   .header {
     flex-direction: column; /* Stacks logo and nav vertically */
     padding: 1rem 1.5rem; /* Adjusted padding */
@@ -264,7 +264,7 @@ a {
     padding-bottom: 0.5rem; /* Add some padding for scrollbar visibility */
   }
 
-  /* Hide scrollbar for a cleaner look */
+  /* Hide scrollbar for a cleaner look on mobile */
   nav::-webkit-scrollbar {
     display: none;
   }
@@ -293,7 +293,7 @@ a {
     font-size: 1rem;
   }
 
-  /* Executive Committee (Swiper) */
+  /* Executive Committee (Swiper) on Mobile */
   .swiper-slide img {
     width: 200px; /* Smaller images in swiper for mobile */
   }
@@ -317,7 +317,7 @@ a {
   /* Executive Committee (Swiper) - Force Grid-like display on desktop */
   .swiper-wrapper {
     display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columns responsive */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columns responsive, adjust minmax as needed */
     gap: 2rem; /* Gap between grid items */
     transform: none !important; /* Crucial: Override Swiper's inline transforms */
     width: 100% !important; /* Ensure wrapper takes full width */
