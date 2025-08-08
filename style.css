@@ -1,10 +1,10 @@
 /* ===========================
-   GOOGLE FONT IMPORTS
+    GOOGLE FONT IMPORTS
 =========================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Michroma&family=Abel&display=swap');
 
 /* ===========================
-   RESET + BASE STYLES
+    RESET + BASE STYLES
 =========================== */
 * {
   margin: 0;
@@ -12,10 +12,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Playfair Display', serif;
+  margin: 0;
   background-color: #000;
-  color: white;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
   line-height: 1.6;
 }
 
@@ -30,102 +35,76 @@ h1, h2, h3, h4, h5, h6,
 a {
   color: #00bcd4;
   text-decoration: none;
+  transition: color 0.3s ease; /* Added transition for links */
 }
 
 /* ===========================
     HEADER & NAV
 =========================== */
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.5rem 2rem;
-    background: #111;
+  display: flex;
+  justify-content: space-between; /* Space out logo and nav links */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: white;
-    letter-spacing: 1.2px;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 1.5rem; /* Consistent size for header logo */
+  color: #fff;
+  letter-spacing: normal; /* Keep original letter spacing */
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 #cursor {
-    font-weight: 300;
-    animation: blink 1s infinite;
+  display: inline-block;
+  font-weight: 300;
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 nav {
-    text-align: center;
-    width: 100%;
+  text-align: right;
+  width: auto; /* Allow nav to take its natural width */
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.2rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping on desktop */
+  justify-content: flex-end; /* Align links to the right */
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links li a {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: white;
-    transition: 0.3s;
-    letter-spacing: 0.5px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+  white-space: nowrap; /* Ensure links stay on one line */
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
-    color: #00bcd4;
+  color: #6cf;
 }
 
 /* ===========================
-    Fix for Mobile
-=========================== */
-@media (max-width: 400px) {
-    .header {
-        flex-direction: row; /* Puts logo and nav on the same row */
-        justify-content: space-between;
-    }
-    
-    nav {
-        width: auto;
-        overflow-x: auto; /* Allows horizontal scrolling */
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .nav-links {
-        flex-wrap: nowrap; /* Forces links to stay on a single line */
-        justify-content: flex-start;
-        gap: 0.8rem;
-    }
-    
-    .nav-links li a {
-        font-size: 0.9rem;
-        padding: 0.2rem;
-        white-space: nowrap; /* Prevents text inside links from wrapping */
-    }
-
-    .logo {
-        font-size: 2rem;
-    }
-}
-
-/* ===========================
-   HERO SECTION (VIDEO)
+    HERO SECTION (VIDEO)
 =========================== */
 .hero {
   position: relative;
@@ -134,6 +113,7 @@ nav {
 }
 
 .hero video {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -141,44 +121,44 @@ nav {
 
 .hero-overlay {
   position: absolute;
-  bottom: 5%;
-  left: 5%;
-  right: 5%;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
-  border-radius: 12px;
   text-align: center;
 }
 
 .hero-overlay h2 {
+  font-family: 'Special Gothic Expanded One', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
 }
 
-.hero-overlay h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  margin: 0.5rem auto 0;
-  border-bottom: 2px solid #00bcd4;
+.hero-overlay p {
+  max-width: 800px;
+  font-size: 1.1rem;
 }
 
 /* ===========================
-   SECTIONS
+    SECTIONS
 =========================== */
 .section {
   padding: 4rem 2rem;
   text-align: center;
+}
+
+.dark-blue {
   background-color: #000;
 }
 
-.dark-blue,
 .dark-gradient {
-  background-color: #000 !important;
+  background: linear-gradient(145deg, #0d0d0d, #000000);
 }
 
 .section h2 {
@@ -187,7 +167,7 @@ nav {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 1.2rem;
-  color: white;
+  color: #fff; /* Keep original color */
 }
 
 .section h2::after {
@@ -199,139 +179,72 @@ nav {
 }
 
 /* ===========================
-   EXECUTIVE TEAM CAROUSEL
+    EXECUTIVE TEAM CAROUSEL
 =========================== */
-.team-wrapper {
-  overflow: hidden;
-  position: relative;
-  margin-top: 2rem;
-}
-
-.team-carousel {
-  display: flex;
-  gap: 1rem;
-  transition: transform 0.5s ease;
-  scroll-behavior: smooth;
-  align-items: center;
-  justify-content: center;
-}
-
-.team-card {
-  flex: 0 0 auto;
-  width: 300px;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #111;
-  border: 1px solid #333;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0.4;
-  transform: scale(0.85);
-  cursor: pointer;
-}
-
-.team-card img {
+.swiper {
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+  padding: 5rem 0;
 }
 
-.team-card.active {
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0.3;
+}
+
+.swiper-slide-active {
+  transform: scale(1.2);
   opacity: 1;
-  transform: scale(1.15);
   z-index: 10;
 }
 
-.team-card:hover {
-  transform: scale(1.05);
-  opacity: 1 !important;
-}
-
-/* DESKTOP GRID */
-@media (min-width: 769px) {
-  .team-carousel {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .team-card {
-    width: 100%;
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* MOBILE SLIDER */
-@media (max-width: 768px) {
-  .team-wrapper {
-    overflow-x: auto;
-  }
-
-  .team-carousel {
-    flex-wrap: nowrap;
-    animation: scroll-horizontal 20s linear infinite;
-  }
-
-  @keyframes scroll-horizontal {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .team-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-
-  .team-carousel:hover {
-    animation-play-state: paused;
-  }
-
-  .team-card {
-    scroll-snap-align: center;
-  }
+.swiper-slide img {
+  width: 250px;
+  border-radius: 10px;
 }
 
 /* ===========================
-   DOT INDICATORS
+    EVENTS
 =========================== */
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+.event-card {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+  border: 1px solid #444;
 }
 
-.carousel-indicators .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #666;
-  opacity: 0.5;
-  transition: opacity 0.3s, transform 0.3s;
+.event-card:hover {
+  transform: translateY(-5px);
 }
 
-.carousel-indicators .dot.active {
-  background: #00bcd4;
-  opacity: 1;
-  transform: scale(1.3);
+.event-card img {
+  width: 100%;
+  height: auto;
+}
+
+.event-card h3 {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+}
+
+.event-card p {
+  font-size: 0.95rem;
+  font-family: 'Playfair Display', serif;
+  color: #aaa;
 }
 
 /* ===========================
-   EVENTS
-=========================== */
-.coming-soon {
-  font-size: 1.5rem;
-  color: #bbb;
-}
-
-/* ===========================
-   CONTACT SECTION
+    CONTACT SECTION
 =========================== */
 .contact-links {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -351,16 +264,16 @@ nav {
 }
 
 /* ===========================
-   FOOTER
+    FOOTER
 =========================== */
 .footer {
-  background: #0b0b0b;
-  padding: 2rem;
   text-align: center;
-  color: #aaa;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
 }
 
-.footer .copyright {
+.footer-main {
   font-family: 'Michroma', sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
@@ -368,41 +281,54 @@ nav {
   color: #888;
 }
 
-.footer .credit {
+.footer-credit {
   font-family: 'Abel', sans-serif;
   font-size: 0.8rem;
   color: #888;
 }
 
 /* ===========================
-   MEDIA QUERIES
+    MEDIA QUERIES
 =========================== */
 @media (max-width: 768px) {
   .header {
-    padding: 1rem 2rem;
+    flex-direction: column; /* Stacks logo and nav vertically */
+    padding: 1rem 1.5rem; /* Reduced padding */
+    gap: 1rem; /* Space between logo and nav */
   }
 
-  .hero-overlay h2 {
-    font-size: 1.7rem;
-  }
-
-  .section h2 {
-    font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 400px) {
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center; /* Centers links when they wrap */
+    gap: 1rem; /* Smaller gap for mobile */
+    flex-wrap: wrap; /* Allow wrapping for nav links on smaller screens */
   }
 
   .nav-links li a {
-    font-size: 0.9rem;
-    padding: 0.2rem;
+    font-size: 0.9rem; /* Smaller font for links */
+    padding: 0.2rem 0.5rem; /* Add some padding around text */
   }
 
   .logo {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Smaller logo for mobile */
+  }
+
+  .hero-overlay h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+
+  .swiper-slide img {
+    width: 200px; /* Smaller images in swiper for mobile */
+  }
+
+  .swiper-slide-active {
+    transform: scale(1.1); /* Less aggressive scaling for active slide */
+  }
+
+  .swiper {
+    padding: 3rem 0; /* Reduced padding for swiper section */
   }
 }
