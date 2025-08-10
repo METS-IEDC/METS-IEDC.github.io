@@ -1,333 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Official website of METS IEDC. Explore innovation, technology, and entrepreneurship.">
-  <meta name="keywords" content="METS IEDC, Innovation, Entrepreneurship, Kerala, College">
-  <meta name="author" content="METS IEDC Team">
-  <title>METS IEDC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Official website of METS IEDC. Explore innovation, technology, and entrepreneurship.">
+  <meta name="keywords" content="METS IEDC, Innovation, Entrepreneurship, Kerala, College">
+  <meta name="author" content="METS IEDC Team">
+  <title>METS IEDC</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Abel&family=Michroma&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Special+Gothic+Expanded+One&family=Abel&family=Michroma&display=swap" rel="stylesheet">
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-    }
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+    }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #000;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-    .logo {
-      font-family: 'Special Gothic Expanded One', sans-serif;
-      font-size: 1.5rem;
-      color: #fff;
-    }
+    .logo {
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #6cf;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-overlay h2 {
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-overlay p {
+      max-width: 800px;
+      font-size: 1.1rem;
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 5rem 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0.3;
+    }
+
+    .swiper-slide-active {
+      transform: scale(1.2);
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .swiper-slide img {
+      width: 250px;
+      border-radius: 10px;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    .dark-blue {
+      background-color: #000;
+    }
+
+    .dark-gradient {
+      background: linear-gradient(145deg, #0d0d0d, #000000);
+    }
+
+    #cursor {
+      display: inline-block;
+      font-weight: 300;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .contact-links a {
+      color: #6cf;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .contact-links a:hover {
+      color: #fff;
+    }
+
+    /* New styles for the responsive navigation */
+    .hamburger-menu {
+      display: none; /* Hidden by default on large screens */
+      background: none;
+      border: none;
+      cursor: pointer;
       padding: 0;
-      margin: 0;
+      z-index: 1001;
     }
 
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s;
+    .hamburger-menu .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
     }
+    
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+      .hamburger-menu {
+        display: block; /* Show the hamburger button */
+      }
 
-    .nav-links li a:hover,
-    .nav-links li a.active {
-      color: #6cf;
-    }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hide the menu off-screen */
+        width: 70%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transition: right 0.3s ease-in-out;
+      }
 
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
+      .nav-links.active {
+        right: 0; /* Slide the menu in */
+      }
 
-    .hero video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      .header {
+        padding: 1rem;
+      }
     }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .hero-overlay h2 {
-      font-family: 'Special Gothic Expanded One', sans-serif;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-overlay p {
-      max-width: 800px;
-      font-size: 1.1rem;
-    }
-
-    .swiper {
-      width: 100%;
-      padding: 5rem 0;
-    }
-
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s, opacity 0.3s;
-      opacity: 0.3;
-    }
-
-    .swiper-slide-active {
-      transform: scale(1.2);
-      opacity: 1;
-      z-index: 10;
-    }
-
-    .swiper-slide img {
-      width: 250px;
-      border-radius: 10px;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-    }
-
-    .dark-blue {
-      background-color: #000;
-    }
-
-    .dark-gradient {
-      background: linear-gradient(145deg, #0d0d0d, #000000);
-    }
-
-    #cursor {
-      display: inline-block;
-      font-weight: 300;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .contact-links a {
-      color: #6cf;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s;
-    }
-
-    .contact-links a:hover {
-      color: #fff;
-    }
+    
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <span id="typed-text"></span><span id="cursor">|</span>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#hero" class="nav-link">Home</a></li>
-        <li><a href="events.html" class="nav-link">Gallery</a></li>
-        <li><a href="Archaena.html" class="nav-link">Archaena</a></li>
-        <li><a href="#contact" class="nav-link">Connect</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header class="header">
+    <div class="logo">
+      <span id="typed-text"></span><span id="cursor">|</span>
+    </div>
+    <button class="hamburger-menu" aria-label="Toggle navigation menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="events.html" class="nav-link">Gallery</a></li>
+        <li><a href="Archaena.html" class="nav-link">Archaena</a></li>
+        <li><a href="#contact" class="nav-link">Connect</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section id="hero" class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="assets/banner.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-overlay">
-      <h2>WHAT IS IEDC?</h2>
-      <p>
-        IEDC (Innovation and Entrepreneurship Development Center) is a student-driven initiative that nurtures creativity, entrepreneurship, and innovation among young minds. It acts as a launchpad for new ideas, encouraging students to turn problems into opportunities through real-time tech and business solutions.
-      </p>
-    </div>
-  </section>
+  <section id="hero" class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="assets/banner.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay">
+      <h2>WHAT IS IEDC?</h2>
+      <p>
+        IEDC (Innovation and Entrepreneurship Development Center) is a student-driven initiative that nurtures creativity, entrepreneurship, and innovation among young minds. It acts as a launchpad for new ideas, encouraging students to turn problems into opportunities through real-time tech and business solutions.
+      </p>
+    </div>
+  </section>
 
-  <section id="team" class="section dark-blue">
-    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Executive Committee</h2>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <!-- Instagram-linked cards -->
-        <div class="swiper-slide"><a href="https://instagram.com/adrifayin" target="_blank"><img src="assets/images/1.png" alt="Member 1" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/dee_t_hu_" target="_blank"><img src="assets/images/2.png" alt="Member 2" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/devadhath_p_v" target="_blank"><img src="assets/images/3.png" alt="Member 3" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/md_fahad__" target="_blank"><img src="assets/images/4.png" alt="Member 4" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/_abhi_._x_" target="_blank"><img src="assets/images/5.png" alt="Member 5" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/shxlnh" target="_blank"><img src="assets/images/6.png" alt="Member 6" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/r0hiithhh" target="_blank"><img src="assets/images/7.png" alt="Member 7" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/___.a.ru.n.___" target="_blank"><img src="assets/images/8.png" alt="Member 8" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/johneeee._" target="_blank"><img src="assets/images/9.png" alt="Member 9" /></a></div>
-        <div class="swiper-slide"><a href="https://instagram.com/_alee__naa" target="_blank"><img src="assets/images/10.png" alt="Member 10" /></a></div>
-      </div>
-    </div>
-  </section>
+  <section id="team" class="section dark-blue">
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Executive Committee</h2>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+                <div class="swiper-slide"><a href="https://instagram.com/adrifayin" target="_blank"><img src="assets/images/1.png" alt="Member 1" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/dee_t_hu_" target="_blank"><img src="assets/images/2.png" alt="Member 2" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/devadhath_p_v" target="_blank"><img src="assets/images/3.png" alt="Member 3" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/md_fahad__" target="_blank"><img src="assets/images/4.png" alt="Member 4" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/_abhi_._x_" target="_blank"><img src="assets/images/5.png" alt="Member 5" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/shxlnh" target="_blank"><img src="assets/images/6.png" alt="Member 6" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/r0hiithhh" target="_blank"><img src="assets/images/7.png" alt="Member 7" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/___.a.ru.n.___" target="_blank"><img src="assets/images/8.png" alt="Member 8" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/johneeee._" target="_blank"><img src="assets/images/9.png" alt="Member 9" /></a></div>
+        <div class="swiper-slide"><a href="https://instagram.com/_alee__naa" target="_blank"><img src="assets/images/10.png" alt="Member 10" /></a></div>
+      </div>
+    </div>
+  </section>
 
-  <section id="events" class="section dark-gradient">
-    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Events</h2>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
-      <a href="sharktank.html" style="text-decoration: none; color: inherit;">
-        <div style="background: #111; border-radius: 12px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; border: 1px solid #444;">
-          <img src="assets/images/sharktank-thumb.jpg" alt="Shark Tank Poster" style="width: 100%; height: auto;" />
-          <div style="padding: 1rem;">
-            <h3 style="font-family: 'Special Gothic Expanded One', sans-serif; font-size: 1.3rem; margin: 0 0 0.5rem;">Shark Tank</h3>
-            <p style="font-size: 0.95rem; font-family: 'Playfair Display', serif; color: #aaa;">See the Results</p>
-            <p style="font-size: 0.85rem; color: #6cf;">Click Here</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </section>
+  <section id="events" class="section dark-gradient">
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Events</h2>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
+      <a href="sharktank.html" style="text-decoration: none; color: inherit;">
+        <div style="background: #111; border-radius: 12px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; border: 1px solid #444;">
+          <img src="assets/images/sharktank-thumb.jpg" alt="Shark Tank Poster" style="width: 100%; height: auto;" />
+          <div style="padding: 1rem;">
+            <h3 style="font-family: 'Special Gothic Expanded One', sans-serif; font-size: 1.3rem; margin: 0 0 0.5rem;">Shark Tank</h3>
+            <p style="font-size: 0.95rem; font-family: 'Playfair Display', serif; color: #aaa;">See the Results</p>
+            <p style="font-size: 0.85rem; color: #6cf;">Click Here</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
 
-  <section id="contact" class="section dark-blue">
-    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Connect With Us</h2>
-    <div class="contact-links">
-      <a href="mailto:metscasiedc@gmail.com">Email</a>
-      <a href="https://instagram.com/mets_iedc" target="_blank">Instagram</a>
-      <a href="https://youtube.com/@METS_IEDC" target="_blank">YouTube</a>
-      <a href="https://x.com/METS_IEDC" target="_blank">X</a>
-      <a href="https://chat.whatsapp.com/DJaOZI7GVjb1uBy3L5yFN8?mode=ac_t" target="_blank">WhatsApp</a>
-    </div>
-  </section>
+  <section id="contact" class="section dark-blue">
+    <h2 style="font-family: 'Special Gothic Expanded One', sans-serif; text-align: center;">Connect With Us</h2>
+    <div class="contact-links">
+      <a href="mailto:metscasiedc@gmail.com">Email</a>
+      <a href="https://instagram.com/mets_iedc" target="_blank">Instagram</a>
+      <a href="https://youtube.com/@METS_IEDC" target="_blank">YouTube</a>
+      <a href="https://x.com/METS_IEDC" target="_blank">X</a>
+      <a href="https://chat.whatsapp.com/DJaOZI7GVjb1uBy3L5yFN8?mode=ac_t" target="_blank">WhatsApp</a>
+    </div>
+  </section>
 
-  <footer class="footer">
-    <p class="footer-main">© 2025 METS IEDC. All rights reserved.</p>
-    <p class="footer-credit">Made by Shalan Muneer.</p>
-  </footer>
+  <footer class="footer">
+    <p class="footer-main">© 2025 METS IEDC. All rights reserved.</p>
+    <p class="footer-credit">Made by Shalan Muneer.</p>
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    const typedText = document.getElementById('typed-text');
-    const cursor = document.getElementById('cursor');
-    const fullText1 = "METS C.A.S";
-    const fullText2 = "METS IEDC";
-    let text = '';
-    let index = 0;
-    let state = 'typing1';
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const typedText = document.getElementById('typed-text');
+    const cursor = document.getElementById('cursor');
+    const fullText1 = "METS C.A.S";
+    const fullText2 = "METS IEDC";
+    let text = '';
+    let index = 0;
+    let state = 'typing1';
 
-    function typeWriter() {
-      if (state === 'typing1') {
-        if (index < fullText1.length) {
-          text += fullText1.charAt(index);
-          typedText.textContent = text;
-          index++;
-          setTimeout(typeWriter, 25);
-        } else {
-          setTimeout(() => {
-             state = 'deleting1';
-             typeWriter();
-          }, 1000);
-        }
-      } else if (state === 'deleting1') {
-        if (index > 0) {
-          text = text.slice(0, -1);
-          typedText.textContent = text;
-          index--;
-          setTimeout(typeWriter, 10);
-        } else {
-          state = 'typing2';
-          index = 0;
-          text = '';
-          setTimeout(typeWriter, 100);
-        }
-      } else if (state === 'typing2') {
-        if (index < fullText2.length) {
-          text += fullText2.charAt(index);
-          typedText.textContent = text;
-          index++;
-          setTimeout(typeWriter, 50);
-        } else {
-          cursor.style.display = "none";
-        }
-      }
-    }
-    typeWriter();
+    function typeWriter() {
+      if (state === 'typing1') {
+        if (index < fullText1.length) {
+          text += fullText1.charAt(index);
+          typedText.textContent = text;
+          index++;
+          setTimeout(typeWriter, 25);
+        } else {
+          setTimeout(() => {
+             state = 'deleting1';
+             typeWriter();
+          }, 1000);
+        }
+      } else if (state === 'deleting1') {
+        if (index > 0) {
+          text = text.slice(0, -1);
+          typedText.textContent = text;
+          index--;
+          setTimeout(typeWriter, 10);
+        } else {
+          state = 'typing2';
+          index = 0;
+          text = '';
+          setTimeout(typeWriter, 100);
+        }
+      } else if (state === 'typing2') {
+        if (index < fullText2.length) {
+          text += fullText2.charAt(index);
+          typedText.textContent = text;
+          index++;
+          setTimeout(typeWriter, 50);
+        } else {
+          cursor.style.display = "none";
+        }
+      }
+    }
+    typeWriter();
 
-    new Swiper('.swiper', {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      centeredSlides: true,
-      loop: true,
-      grabCursor: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false
-      },
-      breakpoints: {
-        320: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
+    new Swiper('.swiper', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      breakpoints: {
+        320: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    // New JavaScript for the hamburger menu
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
-  </script>
+
+    // Optional: Close the menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
