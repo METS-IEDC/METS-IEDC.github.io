@@ -1,7 +1,12 @@
+title: "METS IEDC"
+description: "Official website of METS IEDC"
+url: "https://mets-iedc.github.io"
+
 plugins:
   - jekyll-sitemap
 
+# (Optional) Exclude pages you don’t want in sitemap
 exclude:
-  - googled1154617d00ca8d2.html   # keep online for Google, but exclude from sitemap
-  - sharktank_demo.html           # demo/test page
-  - Archaena.html                 # test page
+  - Archaena.html
+  - sharktank_demo.html
+  - googled1154617d00ca8d2.html
