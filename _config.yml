@@ -1,2 +1,7 @@
 plugins:
   - jekyll-sitemap
+
+exclude:
+  - googled1154617d00ca8d2.html   # keep online for Google, but exclude from sitemap
+  - sharktank_demo.html           # demo/test page
+  - Archaena.html                 # test page
