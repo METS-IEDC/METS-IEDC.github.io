@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
-sitemap: https://mets-iedc.github.io/sitemap.xml
+
+Disallow: /Archaena.html
+Disallow: /sharktank_demo.html
+Disallow: /googled1154617d00ca8d2.html
+
+Sitemap: https://mets-iedc.github.io/sitemap.xml
