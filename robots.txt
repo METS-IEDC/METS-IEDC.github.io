@@ -1,1 +1,3 @@
-
+User-agent: *
+Allow: /
+sitemap: https://mets-iedc.github.io/sitemap.xml
